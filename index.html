@@ -14,6 +14,7 @@ Debuging="Beng; Evildoer; Rella;"
     <meta name="a-Egg-App" content="a-Egg-App">  
     <script src="https://aframe.io/releases/0.3.0/aframe.js"></script>
     <script src="https://cdn.rawgit.com/AltspaceVR/AltspaceSDK/v2.2.0/dist/altspace.js"></script>
+    <script src="cached-model.js"></script>
     <script>
 			AFRAME.registerComponent('collapse-model', {
 				init: function () {
@@ -57,21 +58,21 @@ Debuging="Beng; Evildoer; Rella;"
       <img id="basket-icon" src="basket-icon.jpg"/>
       <img id="egg-icon" src="egg-icon.jpg"/>
 
-      <a-mixin id="earsb" obj-model="obj: #earsb-obj; mtl: #earsb-mtl" collapse-model scale="1.1 1.1 1.1"></a-mixin>
+      <a-mixin id="earsb" cached-obj-model="obj: #earsb-obj; mtl: #earsb-mtl" collapse-model scale="1.1 1.1 1.1"></a-mixin>
       <a-mixin id="earsb-head" rotation="0 180 0" n-skeleton-parent="part: head;" position="0 0.06 0" sync sync-n-skeleton-parent></a-mixin>
-      <a-mixin id="suitb" obj-model="obj: #suitb-obj; mtl: #suitb-mtl" collapse-model scale="0.3 0.3 0.3"></a-mixin>
+      <a-mixin id="suitb" cached-obj-model="obj: #suitb-obj; mtl: #suitb-mtl" collapse-model scale="0.3 0.3 0.3"></a-mixin>
       <a-mixin id="suitb-spine" rotation="0 180 0" n-skeleton-parent="part: spine;" position="0 -0.15 0.05" sync sync-n-skeleton-parent></a-mixin>
 
-      <a-mixin id="earsp" obj-model="obj: #earsp-obj; mtl: #earsp-mtl" collapse-model scale="1.1 1.1 1.1"></a-mixin>
+      <a-mixin id="earsp" cached-obj-model="obj: #earsp-obj; mtl: #earsp-mtl" collapse-model scale="1.1 1.1 1.1"></a-mixin>
       <a-mixin id="earsp-head" rotation="0 180 0" n-skeleton-parent="part: head;" position="0 0.06 0" sync sync-n-skeleton-parent></a-mixin>
-      <a-mixin id="suitp" obj-model="obj: #suitp-obj; mtl: #suitp-mtl" collapse-model scale="1 1 1"></a-mixin>
+      <a-mixin id="suitp" cached-obj-model="obj: #suitp-obj; mtl: #suitp-mtl" collapse-model scale="1 1 1"></a-mixin>
       <a-mixin id="suitp-spine" rotation="0 -90 0" n-skeleton-parent="part: spine;" position="0 -0.4 -0.05" sync sync-n-skeleton-parent></a-mixin>
 
-      <a-mixin id="carrot" obj-model="obj: #carrot-obj; mtl: #carrot-mtl" collapse-model scale="65 65 65"></a-mixin>
+      <a-mixin id="carrot" cached-obj-model="obj: #carrot-obj; mtl: #carrot-mtl" collapse-model scale="65 65 65"></a-mixin>
       <a-mixin id="carrot-hand" rotation="0 90 0" n-skeleton-parent="part: hand; side: right; index: 0" position="-0.03 -0.03 -0.075" sync sync-n-skeleton-parent></a-mixin>
-      <a-mixin id="basket" obj-model="obj: #basket-obj; mtl: #basket-mtl" collapse-model scale="50 50 50"></a-mixin>
+      <a-mixin id="basket" cached-obj-model="obj: #basket-obj; mtl: #basket-mtl" collapse-model scale="50 50 50"></a-mixin>
       <a-mixin id="basket-hand" rotation="-90 180 0" n-skeleton-parent="part: hand; side: left; index: 0" position="0 -0.03 -0.5" sync sync-n-skeleton-parent></a-mixin>
-      <a-mixin id="egg" obj-model="obj: #egg-obj; mtl: #egg-mtl" collapse-model scale="0.05 0.05 0.05"></a-mixin>
+      <a-mixin id="egg" cached-obj-model="obj: #egg-obj; mtl: #egg-mtl" collapse-model scale="0.05 0.05 0.05"></a-mixin>
       <a-mixin id="egg-hand" rotation="0 180 90" n-skeleton-parent="part: hand; side: right; index: 0" position="-0.035 -0.04 -0.08" sync sync-n-skeleton-parent></a-mixin>
 
       <!--a-mixin id="score-spine" n-text="text: 0" rotation="0 0 0" n-skeleton-parent="part: spine" position="0 1 0" sync sync-n-skeleton-parent></a-mixin-->
@@ -94,80 +95,80 @@ Debuging="Beng; Evildoer; Rella;"
       <!--a-box id="egg1" color="red" scale="0.5 0.5 0.5" position="-1 2 -3" wire="on: click; emit: eggc"></a-box>
       <a-box id="num" color="green" scale="0.5 0.5 0.5" position="-1 2 -4"></a-box-->
 
-      <!--a-obj-model scale="2 2 2" src="#suitb-obj" mtl="#suitb-mtl" wrapping position="2 0 -3" rotation="0 0 0"></a-obj-model>
-      <a-obj-model scale="0.1 0.1 0.1" src="#suitp-obj" mtl="#suitp-mtl" wrapping position="4 0 -3" rotation="0 0 0"></a-obj-model>
-      <a-obj-model scale="2 2 2" src="#earsb-obj" mtl="#earsb-mtl" wrapping position="2 2 -3" rotation="0 0 0"></a-obj-model>
-      <a-obj-model scale="2 2 2" src="#earsp-obj" mtl="#earsp-mtl" wrapping position="4 2 -3" rotation="0 0 0"></a-obj-model>
-      <a-obj-model scale="0.5 0.5 0.5" src="#egg-obj" mtl="#egg-mtl" wrapping position="0 1 -1" rotation="0 0 0"></a-obj-model>
-      <a-obj-model scale="50 50 50" src="#basket-obj" mtl="#basket-mtl" wrapping position="-1 1 -1" rotation="0 0 0"></a-obj-model>
-      <a-obj-model scale="65 65 65" src="#carrot-obj" mtl="#carrot-mtl" wrapping position="-2 1 -1" rotation="0 0 0"></a-obj-model-->
+      <!--cached-obj-model scale="2 2 2" src="#suitb-obj" mtl="#suitb-mtl" wrapping position="2 0 -3" rotation="0 0 0"></cached-obj-model>
+      <cached-obj-model scale="0.1 0.1 0.1" src="#suitp-obj" mtl="#suitp-mtl" wrapping position="4 0 -3" rotation="0 0 0"></cached-obj-model>
+      <cached-obj-model scale="2 2 2" src="#earsb-obj" mtl="#earsb-mtl" wrapping position="2 2 -3" rotation="0 0 0"></cached-obj-model>
+      <cached-obj-model scale="2 2 2" src="#earsp-obj" mtl="#earsp-mtl" wrapping position="4 2 -3" rotation="0 0 0"></cached-obj-model>
+      <cached-obj-model scale="0.5 0.5 0.5" src="#egg-obj" mtl="#egg-mtl" wrapping position="0 1 -1" rotation="0 0 0"></cached-obj-model>
+      <cached-obj-model scale="50 50 50" src="#basket-obj" mtl="#basket-mtl" wrapping position="-1 1 -1" rotation="0 0 0"></cached-obj-model>
+      <cached-obj-model scale="65 65 65" src="#carrot-obj" mtl="#carrot-mtl" wrapping position="-2 1 -1" rotation="0 0 0"></cached-obj-model-->
 
-      <a-obj-model id="egg1" scale="0.05 0.05 0.05" src="#egg-obj" mtl="#egg-mtl" position="4.34 -3.88 -2.25" rotation="0 0 0" wire="on: click; emit: eggc; targets: #egg1s, #egg1a;">
+      <cached-obj-model id="egg1" scale="0.05 0.05 0.05" src="#egg-obj" mtl="#egg-mtl" position="4.34 -3.88 -2.25" rotation="0 0 0" wire="on: click; emit: eggc; targets: #egg1s, #egg1a;">
         <a-animation id="egg1a" attribute="position" begin="on: eggc" dur="100000" easing="linear" repeat="0" fill="backwards" to="0 -1000 0"></a-animation>
-      </a-obj-model>
-      <a-obj-model id="egg2" scale="0.05 0.05 0.05" src="#egg-obj" mtl="#egg-mtl" position="7.38 -3.85 0.42" rotation="0 0 0" wire="on: click; emit: eggc; targets: #egg1s, #egg2a;">
+      </cached-obj-model>
+      <cached-obj-model id="egg2" scale="0.05 0.05 0.05" src="#egg-obj" mtl="#egg-mtl" position="7.38 -3.85 0.42" rotation="0 0 0" wire="on: click; emit: eggc; targets: #egg1s, #egg2a;">
         <a-animation id="egg2a" attribute="position" begin="on: eggc" dur="100000" easing="linear" repeat="0" fill="backwards" to="0 -1000 0"></a-animation>
-      </a-obj-model>
-      <a-obj-model id="egg3" scale="0.05 0.05 0.05" src="#egg-obj" mtl="#egg-mtl" position="4.37 -4.71 8.74" rotation="0 0 0" wire="on: click; emit: eggc; targets: #egg1s, #egg3a;">
+      </cached-obj-model>
+      <cached-obj-model id="egg3" scale="0.05 0.05 0.05" src="#egg-obj" mtl="#egg-mtl" position="4.37 -4.71 8.74" rotation="0 0 0" wire="on: click; emit: eggc; targets: #egg1s, #egg3a;">
         <a-animation id="egg3a" attribute="position" begin="on: eggc" dur="100000" easing="linear" repeat="0" fill="backwards" to="0 -1000 0"></a-animation>
-      </a-obj-model>
-      <a-obj-model id="egg4" scale="0.05 0.05 0.05" src="#egg-obj" mtl="#egg-mtl" position="-9.74 -3.51 -7.11" rotation="0 0 0" wire="on: click; emit: eggc; targets: #egg1s, #egg4a;">
+      </cached-obj-model>
+      <cached-obj-model id="egg4" scale="0.05 0.05 0.05" src="#egg-obj" mtl="#egg-mtl" position="-9.74 -3.51 -7.11" rotation="0 0 0" wire="on: click; emit: eggc; targets: #egg1s, #egg4a;">
         <a-animation id="egg4a" attribute="position" begin="on: eggc" dur="100000" easing="linear" repeat="0" fill="backwards" to="0 -1000 0"></a-animation>
-      </a-obj-model>
-      <a-obj-model id="egg5" scale="0.05 0.05 0.05" src="#egg-obj" mtl="#egg-mtl" position="-3.12 -3.43 -14.78" rotation="0 0 0" wire="on: click; emit: eggc; targets: #egg1s, #egg5a;">
+      </cached-obj-model>
+      <cached-obj-model id="egg5" scale="0.05 0.05 0.05" src="#egg-obj" mtl="#egg-mtl" position="-3.12 -3.43 -14.78" rotation="0 0 0" wire="on: click; emit: eggc; targets: #egg1s, #egg5a;">
         <a-animation id="egg5a" attribute="position" begin="on: eggc" dur="100000" easing="linear" repeat="0" fill="backwards" to="0 -1000 0"></a-animation>
-      </a-obj-model>
-      <a-obj-model id="egg6" scale="0.05 0.05 0.05" src="#egg-obj" mtl="#egg-mtl" position="-0.59 -3.26 -18.63" rotation="0 0 0" wire="on: click; emit: eggc; targets: #egg1s, #egg6a;">
+      </cached-obj-model>
+      <cached-obj-model id="egg6" scale="0.05 0.05 0.05" src="#egg-obj" mtl="#egg-mtl" position="-0.59 -3.26 -18.63" rotation="0 0 0" wire="on: click; emit: eggc; targets: #egg1s, #egg6a;">
         <a-animation id="egg6a" attribute="position" begin="on: eggc" dur="100000" easing="linear" repeat="0" fill="backwards" to="0 -1000 0"></a-animation>
-      </a-obj-model>
-      <a-obj-model id="egg7" scale="0.05 0.05 0.05" src="#egg-obj" mtl="#egg-mtl" position="8.43 -3.29 -28.86" rotation="0 0 0" wire="on: click; emit: eggc; targets: #egg1s, #egg7a;">
+      </cached-obj-model>
+      <cached-obj-model id="egg7" scale="0.05 0.05 0.05" src="#egg-obj" mtl="#egg-mtl" position="8.43 -3.29 -28.86" rotation="0 0 0" wire="on: click; emit: eggc; targets: #egg1s, #egg7a;">
         <a-animation id="egg7a" attribute="position" begin="on: eggc" dur="100000" easing="linear" repeat="0" fill="backwards" to="0 -1000 0"></a-animation>
-      </a-obj-model>
-      <a-obj-model id="egg8" scale="0.05 0.05 0.05" src="#egg-obj" mtl="#egg-mtl" position="7.41 -3.53 -36.25" rotation="0 0 0" wire="on: click; emit: eggc; targets: #egg1s, #egg8a;">
+      </cached-obj-model>
+      <cached-obj-model id="egg8" scale="0.05 0.05 0.05" src="#egg-obj" mtl="#egg-mtl" position="7.41 -3.53 -36.25" rotation="0 0 0" wire="on: click; emit: eggc; targets: #egg1s, #egg8a;">
         <a-animation id="egg8a" attribute="position" begin="on: eggc" dur="100000" easing="linear" repeat="0" fill="backwards" to="0 -1000 0"></a-animation>
-      </a-obj-model>
-      <a-obj-model id="egg9" scale="0.05 0.05 0.05" src="#egg-obj" mtl="#egg-mtl" position="-2.57 -4.31 -34.78" rotation="0 0 0" wire="on: click; emit: eggc; targets: #egg1s, #egg9a;">
+      </cached-obj-model>
+      <cached-obj-model id="egg9" scale="0.05 0.05 0.05" src="#egg-obj" mtl="#egg-mtl" position="-2.57 -4.31 -34.78" rotation="0 0 0" wire="on: click; emit: eggc; targets: #egg1s, #egg9a;">
         <a-animation id="egg9a" attribute="position" begin="on: eggc" dur="100000" easing="linear" repeat="0" fill="backwards" to="0 -1000 0"></a-animation>
-      </a-obj-model>
-      <a-obj-model id="egg10" scale="0.05 0.05 0.05" src="#egg-obj" mtl="#egg-mtl" position="22.52 -3.53 -20.28" rotation="0 0 0" wire="on: click; emit: eggc; targets: #egg1s, #egg10a;">
+      </cached-obj-model>
+      <cached-obj-model id="egg10" scale="0.05 0.05 0.05" src="#egg-obj" mtl="#egg-mtl" position="22.52 -3.53 -20.28" rotation="0 0 0" wire="on: click; emit: eggc; targets: #egg1s, #egg10a;">
         <a-animation id="egg10a" attribute="position" begin="on: eggc" dur="100000" easing="linear" repeat="0" fill="backwards" to="0 -1000 0"></a-animation>
-      </a-obj-model>
-      <a-obj-model id="egg11" scale="0.05 0.05 0.05" src="#egg-obj" mtl="#egg-mtl" position="28.84 -0.26 -18.03" rotation="0 0 0" wire="on: click; emit: eggc; targets: #egg1s, #egg11a;">
+      </cached-obj-model>
+      <cached-obj-model id="egg11" scale="0.05 0.05 0.05" src="#egg-obj" mtl="#egg-mtl" position="28.84 -0.26 -18.03" rotation="0 0 0" wire="on: click; emit: eggc; targets: #egg1s, #egg11a;">
         <a-animation id="egg11a" attribute="position" begin="on: eggc" dur="100000" easing="linear" repeat="0" fill="backwards" to="0 -1000 0"></a-animation>
-      </a-obj-model>
-      <a-obj-model id="egg12" scale="0.05 0.05 0.05" src="#egg-obj" mtl="#egg-mtl" position="26.12 -3.45 -11.52" rotation="0 0 0" wire="on: click; emit: eggc; targets: #egg1s, #egg12a;">
+      </cached-obj-model>
+      <cached-obj-model id="egg12" scale="0.05 0.05 0.05" src="#egg-obj" mtl="#egg-mtl" position="26.12 -3.45 -11.52" rotation="0 0 0" wire="on: click; emit: eggc; targets: #egg1s, #egg12a;">
         <a-animation id="egg12a" attribute="position" begin="on: eggc" dur="100000" easing="linear" repeat="0" fill="backwards" to="0 -1000 0"></a-animation>
-      </a-obj-model>
-      <a-obj-model id="egg13" scale="0.05 0.05 0.05" src="#egg-obj" mtl="#egg-mtl" position="25.18 -2.3 -6.2" rotation="0 0 0" wire="on: click; emit: eggc; targets: #egg1s, #egg13a;">
+      </cached-obj-model>
+      <cached-obj-model id="egg13" scale="0.05 0.05 0.05" src="#egg-obj" mtl="#egg-mtl" position="25.18 -2.3 -6.2" rotation="0 0 0" wire="on: click; emit: eggc; targets: #egg1s, #egg13a;">
         <a-animation id="egg13a" attribute="position" begin="on: eggc" dur="100000" easing="linear" repeat="0" fill="backwards" to="0 -1000 0"></a-animation>
-      </a-obj-model>
-      <a-obj-model id="egg14" scale="0.05 0.05 0.05" src="#egg-obj" mtl="#egg-mtl" position="27.05 0.52 -0.58" rotation="0 0 0" wire="on: click; emit: eggc; targets: #egg1s, #egg14a;">
+      </cached-obj-model>
+      <cached-obj-model id="egg14" scale="0.05 0.05 0.05" src="#egg-obj" mtl="#egg-mtl" position="27.05 0.52 -0.58" rotation="0 0 0" wire="on: click; emit: eggc; targets: #egg1s, #egg14a;">
         <a-animation id="egg14a" attribute="position" begin="on: eggc" dur="100000" easing="linear" repeat="0" fill="backwards" to="0 -1000 0"></a-animation>
-      </a-obj-model>
-      <a-obj-model id="egg16" scale="0.05 0.05 0.05" src="#egg-obj" mtl="#egg-mtl" position="19.44 0.35 8.56" rotation="0 0 0" wire="on: click; emit: eggc; targets: #egg1s, #egg16a;">
+      </cached-obj-model>
+      <cached-obj-model id="egg16" scale="0.05 0.05 0.05" src="#egg-obj" mtl="#egg-mtl" position="19.44 0.35 8.56" rotation="0 0 0" wire="on: click; emit: eggc; targets: #egg1s, #egg16a;">
         <a-animation id="egg16a" attribute="position" begin="on: eggc" dur="100000" easing="linear" repeat="0" fill="backwards" to="0 -1000 0"></a-animation>
-      </a-obj-model>
-      <a-obj-model id="egg17" scale="0.05 0.05 0.05" src="#egg-obj" mtl="#egg-mtl" position="21.64 -1.02 12.8" rotation="0 0 0" wire="on: click; emit: eggc; targets: #egg1s, #egg17a;">
+      </cached-obj-model>
+      <cached-obj-model id="egg17" scale="0.05 0.05 0.05" src="#egg-obj" mtl="#egg-mtl" position="21.64 -1.02 12.8" rotation="0 0 0" wire="on: click; emit: eggc; targets: #egg1s, #egg17a;">
         <a-animation id="egg17a" attribute="position" begin="on: eggc" dur="100000" easing="linear" repeat="0" fill="backwards" to="0 -1000 0"></a-animation>
-      </a-obj-model>
-      <a-obj-model id="egg18" scale="0.05 0.05 0.05" src="#egg-obj" mtl="#egg-mtl" position="27.76 -1.29 15.49" rotation="0 0 0" wire="on: click; emit: eggc; targets: #egg1s, #egg18a;">
+      </cached-obj-model>
+      <cached-obj-model id="egg18" scale="0.05 0.05 0.05" src="#egg-obj" mtl="#egg-mtl" position="27.76 -1.29 15.49" rotation="0 0 0" wire="on: click; emit: eggc; targets: #egg1s, #egg18a;">
         <a-animation id="egg18a" attribute="position" begin="on: eggc" dur="100000" easing="linear" repeat="0" fill="backwards" to="0 -1000 0"></a-animation>
-      </a-obj-model>
-      <a-obj-model id="egg19" scale="0.05 0.05 0.05" src="#egg-obj" mtl="#egg-mtl" position="35.23 2.06 31.06" rotation="0 0 0" wire="on: click; emit: eggc; targets: #egg1s, #egg19a;">
+      </cached-obj-model>
+      <cached-obj-model id="egg19" scale="0.05 0.05 0.05" src="#egg-obj" mtl="#egg-mtl" position="35.23 2.06 31.06" rotation="0 0 0" wire="on: click; emit: eggc; targets: #egg1s, #egg19a;">
         <a-animation id="egg19a" attribute="position" begin="on: eggc" dur="100000" easing="linear" repeat="0" fill="backwards" to="0 -1000 0"></a-animation>
-      </a-obj-model>
-      <a-obj-model id="egg20" scale="0.05 0.05 0.05" src="#egg-obj" mtl="#egg-mtl" position="32.08 1.43 35.38" rotation="0 0 0" wire="on: click; emit: eggc; targets: #egg1s, #egg20a;">
+      </cached-obj-model>
+      <cached-obj-model id="egg20" scale="0.05 0.05 0.05" src="#egg-obj" mtl="#egg-mtl" position="32.08 1.43 35.38" rotation="0 0 0" wire="on: click; emit: eggc; targets: #egg1s, #egg20a;">
         <a-animation id="egg20a" attribute="position" begin="on: eggc" dur="100000" easing="linear" repeat="0" fill="backwards" to="0 -1000 0"></a-animation>
-      </a-obj-model>
-      <a-obj-model id="egg21" scale="0.05 0.05 0.05" src="#egg-obj" mtl="#egg-mtl" position="26.23 0.72 28.52" rotation="0 0 0" wire="on: click; emit: eggc; targets: #egg1s, #egg21a;">
+      </cached-obj-model>
+      <cached-obj-model id="egg21" scale="0.05 0.05 0.05" src="#egg-obj" mtl="#egg-mtl" position="26.23 0.72 28.52" rotation="0 0 0" wire="on: click; emit: eggc; targets: #egg1s, #egg21a;">
         <a-animation id="egg21a" attribute="position" begin="on: eggc" dur="100000" easing="linear" repeat="0" fill="backwards" to="0 -1000 0"></a-animation>
-      </a-obj-model>
-      <a-obj-model id="egg22" scale="0.05 0.05 0.05" src="#egg-obj" mtl="#egg-mtl" position="5.53 -2.48 4.1" rotation="0 0 0" wire="on: click; emit: eggc; targets: #egg1s, #egg22a;">
+      </cached-obj-model>
+      <cached-obj-model id="egg22" scale="0.05 0.05 0.05" src="#egg-obj" mtl="#egg-mtl" position="5.53 -2.48 4.1" rotation="0 0 0" wire="on: click; emit: eggc; targets: #egg1s, #egg22a;">
         <a-animation id="egg22a" attribute="position" begin="on: eggc" dur="100000" easing="linear" repeat="0" fill="backwards" to="0 -1000 0"></a-animation>
-      </a-obj-model>
-      <a-obj-model id="egg23" scale="0.05 0.05 0.05" src="#egg-obj" mtl="#egg-mtl" position="-21.32 -12.56 1.54" rotation="0 0 0" wire="on: click; emit: eggc; targets: #egg1s, #egg23a;">
+      </cached-obj-model>
+      <cached-obj-model id="egg23" scale="0.05 0.05 0.05" src="#egg-obj" mtl="#egg-mtl" position="-21.32 -12.56 1.54" rotation="0 0 0" wire="on: click; emit: eggc; targets: #egg1s, #egg23a;">
         <a-animation id="egg23a" attribute="position" begin="on: eggc" dur="100000" easing="linear" repeat="0" fill="backwards" to="0 -1000 0"></a-animation>
-      </a-obj-model>
+      </cached-obj-model>
       <a-entity id="egg1s" position="0 0 0" n-sound="src: coin1.wav; on: eggc; ; minDistance: 1000; maxDistance: 3000"></a-entity>
 
 
