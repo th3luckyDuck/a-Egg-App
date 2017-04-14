@@ -35,7 +35,7 @@ AFRAME.registerComponent('scoreboard', {
   },
   renderScores: function (snapshot) {
     var users = snapshot.val();
-    var sortedUsers = _(users).values().filter('score').sortBy('score').value();
+    var sortedUsers = _(users).values().filter('score').sortBy('score').reverse().take(20).value();
     // TODO: Do something nicer with people who reach the max score. E.g. display a golden egg!
     var myScore = Math.min(users[this.userId].score || '', this.data.max);
     // TODO: Make this look pretty
