@@ -43,7 +43,7 @@ AFRAME.registerComponent('scoreboard', {
       <a-entity>
         <a-entity n-text={properties({text: myScore})} position="-0.81 0.405 -1.75" rotation="-25 0 0" scale="0.15 0.15 0.03" n-cockpit-parent></a-entity>
         {sortedUsers.map((user, i) =>
-          <a-entity>
+          <a-entity position='3 -3.5 -10' rotation="0 15 0">
             <a-entity n-text={properties({text: user.displayName})} position={`0 ${i} 0`}></a-entity>
             <a-entity n-text={properties({text: Math.min(user.score, this.data.max)})} position={`4 ${i} 0`}></a-entity>
           </a-entity>
