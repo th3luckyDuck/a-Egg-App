@@ -13,7 +13,7 @@ Debuging="Beng; Evildoer; Rella;"
   <title>a-Duck-Suit</title>
   <meta name="a-Egg-App" content="a-Egg-App">
   <script src="https://aframe.io/releases/0.3.0/aframe.min.js"></script>
-  <script src="https://cdn.rawgit.com/AltspaceVR/AltspaceSDK/v2.2.0/dist/altspace.min.js"></script>
+  <script src="js/altspace.js"></script>
   <script src="cached-model.js"></script>
   <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
   <script src="https://unpkg.com/react@15/dist/react.min.js"></script>
@@ -69,48 +69,36 @@ Debuging="Beng; Evildoer; Rella;"
     <img id="egg1" src="egg1.1024x512.jpg"/>
 
     <a-mixin id="earsb" obj-model="obj: #earsb-obj; mtl: #earsb-mtl" collapse-model scale="1.1 1.1 1.1"></a-mixin>
-    <a-mixin id="earsbh" geometry="primitive: plane" material="src: #earsb-icon" scale="0.02 0.02 0.001" collapse-model></a-mixin>
 
     <a-mixin id="earsb-head" rotation="0 180 0" n-skeleton-parent="part: head;" position="0 0.06 0" sync sync-n-skeleton-parent></a-mixin>
-    <a-mixin id="earsb-headh" rotation="45 0 0" position='0.00 0.8 -0.32' n-skeleton-parent="part: hips;" sync sync-n-skeleton-parent></a-mixin>
 
     <a-mixin id="suitb" obj-model="obj: #suitb-obj; mtl: #suitb-mtl" collapse-model scale="0.3 0.3 0.3"></a-mixin>
-    <a-mixin id="suitbh" geometry="primitive: plane" material="src: #suitb-icon" scale="0.02 0.02 0.001" collapse-model></a-mixin>
 
     <a-mixin id="suitb-spine" rotation="0 180 0" n-skeleton-parent="part: spine;" position="0 -0.15 0.05" sync sync-n-skeleton-parent></a-mixin>
-    <a-mixin id="suitb-spineh" rotation="45 0 0" position='-0.03 0.8 -0.32' n-skeleton-parent="part: hips;" sync sync-n-skeleton-parent></a-mixin>
 
     <a-mixin id="earsp" obj-model="obj: #earsp-obj; mtl: #earsp-mtl" collapse-model scale="1.1 1.1 1.1"></a-mixin>
-    <a-mixin id="earsph" geometry="primitive: plane" material="src: #earsp-icon" scale="0.02 0.02 0.001" collapse-model></a-mixin>
 
     <a-mixin id="earsp-head" rotation="0 180 0" n-skeleton-parent="part: head;" position="0 0.06 0" sync sync-n-skeleton-parent></a-mixin>
-    <a-mixin id="earsp-headh" rotation="45 0 0" position='0.00 0.8 -0.32' n-skeleton-parent="part: hips;" sync sync-n-skeleton-parent></a-mixin>
 
     <a-mixin id="suitp" obj-model="obj: #suitp-obj; mtl: #suitp-mtl" collapse-model scale="1 1 1"></a-mixin>
-    <a-mixin id="suitph" geometry="primitive: plane" material="src: #suitp-icon" scale="0.02 0.02 0.001" collapse-model></a-mixin>
 
     <a-mixin id="suitp-spine" rotation="0 -90 0" n-skeleton-parent="part: spine;" position="0 -0.4 -0.05" sync sync-n-skeleton-parent></a-mixin>
-    <a-mixin id="suitp-spineh" rotation="45 0 0" position='-0.03 0.8 -0.32' n-skeleton-parent="part: hips;" sync sync-n-skeleton-parent></a-mixin>
 
     <a-mixin id="carrot" obj-model="obj: #carrot-obj; mtl: #carrot-mtl" collapse-model scale="65 65 65"></a-mixin>
-    <a-mixin id="carroth" geometry="primitive: plane" material="src: #carrot-icon" scale="0.02 0.02 0.001" collapse-model></a-mixin>
 
     <a-mixin id="carrot-hand" rotation="0 90 0" n-skeleton-parent="part: hand; side: right; index: 0" position="-0.03 -0.03 -0.075" sync sync-n-skeleton-parent></a-mixin>
-    <a-mixin id="carrot-handh" rotation="45 0 0" position='0.06 0.8 -0.32' n-skeleton-parent="part: hips;" sync sync-n-skeleton-parent></a-mixin>
 
 
     <a-mixin id="basket" obj-model="obj: #basket-obj; mtl: #basket-mtl" collapse-model scale="50 50 50"></a-mixin>
-    <a-mixin id="basketh" geometry="primitive: plane" material="src: #basket-icon" scale="0.02 0.02 0.001" collapse-model></a-mixin>
 
     <a-mixin id="basket-hand" rotation="-90 180 0" n-skeleton-parent="part: hand; side: left; index: 0" position="0 -0.03 -0.5" sync sync-n-skeleton-parent></a-mixin>
-    <a-mixin id="basket-handh" rotation="45 0 0" position='0.03 0.8 -0.32' n-skeleton-parent="part: hips;" sync sync-n-skeleton-parent></a-mixin>
 
 
     <a-mixin id="egg" obj-model="obj: #egg-obj; mtl: #egg-mtl" collapse-model scale="0.05 0.05 0.05"></a-mixin>
-    <a-mixin id="eggh" geometry="primitive: plane" material="src: #egg-icon" scale="0.02 0.02 0.001" collapse-model></a-mixin>
 
     <a-mixin id="egg-hand" rotation="0 180 90" n-skeleton-parent="part: hand; side: right; index: 0" position="-0.035 -0.04 -0.08" sync sync-n-skeleton-parent></a-mixin>
-    <a-mixin id="egg-handh" rotation="45 0 0" position='0.06 0.8 -0.32' n-skeleton-parent="part: hips;" sync sync-n-skeleton-parent></a-mixin>
+
+    <a-mixin id="button" wire__click_to_anim="on: click; emit: toggle" wire__remove_to_anim="on: removed-last; emit: toggle"></a-mixin>
 
 
     <!--a-mixin id="score-spine" n-text="text: 0" rotation="0 0 0" n-skeleton-parent="part: spine" position="0 1 0" sync sync-n-skeleton-parent></a-mixin-->
@@ -128,26 +116,33 @@ Debuging="Beng; Evildoer; Rella;"
 
   <!--a-entity id="sspine" one-per-user="mixin: score-spine"></a-entity-->
 
-  <a-entity id="earsb-head-instantiator" geometry="primitive: box" material="src: #earsb-icon" position='-0.81 0.205 -1.65' rotation="-25 0 0" scale="0.15 0.15 0.03" n-cockpit-parent instantiator="on: click; group: headg; mixin: earsb earsb-head;" wire="on: mousedown; emit: b1; targets: #b1s, #earsb-head-instantiatorh" altspace-cursor-collider="enabled: true"></a-entity>
-  <a-entity id="earsb-head-instantiatorh" instantiator="on: b1; group: headgh; mixin: earsbh earsb-headh;"></a-entity>
+  <a-entity id="earsb-head-instantiator" geometry="primitive: box" material="src: #earsb-icon" position='-0.81 0.205 -1.65' rotation="-25 0 0" scale="0.15 0.15 0.03" n-cockpit-parent instantiator="on: click; group: headg; mixin: earsb earsb-head;" wire="on: mousedown; emit: b1; targets: #b1s" mixin="button" altspace-cursor-collider="enabled: true">
+    <a-animation begin="toggle" attribute="material.color" from="white" to="pink" dur="200" direction="alternate"></a-animation>
+  </a-entity>
 
-  <a-entity id="suitb-spine-instantiator" geometry="primitive: box" material="src: #suitb-icon" position='-01.01 0.205 -1.65' rotation="-25 0 0" scale="0.15 0.15 0.03" n-cockpit-parent instantiator="on: click; group: spineg; mixin: suitb suitb-spine;" wire="on: mousedown; emit: b1; targets: #b1s, #suitb-spine-instantiatorh" altspace-cursor-collider="enabled: true"></a-entity>
-  <a-entity id="suitb-spine-instantiatorh" instantiator="on: b1; group: spinegh; mixin: suitbh suitb-spineh;"></a-entity>
+  <a-entity id="suitb-spine-instantiator" geometry="primitive: box" material="src: #suitb-icon" position='-01.01 0.205 -1.65' rotation="-25 0 0" scale="0.15 0.15 0.03" n-cockpit-parent instantiator="on: click; group: spineg; mixin: suitb suitb-spine;" wire="on: mousedown; emit: b1; targets: #b1s" altspace-cursor-collider="enabled: true">
+    <a-animation begin="click" attribute="material.color" from="white" to="pink" dur="200" direction="alternate"></a-animation>
+  </a-entity>
 
-  <a-entity id="earsp-head-instantiator" geometry="primitive: box" material="src: #earsp-icon" position='-0.81 0.005 -1.55' rotation="-25 0 0" scale="0.15 0.15 0.03" n-cockpit-parent instantiator="on: click; group: headg; mixin: earsp earsp-head;" wire="on: mousedown; emit: b1; targets: #b1s, #earsp-head-instantiatorh" altspace-cursor-collider="enabled: true"></a-entity>
-  <a-entity id="earsp-head-instantiatorh" instantiator="on: b1; group: headgh; mixin: earsph earsp-headh;"></a-entity>
+  <a-entity id="earsp-head-instantiator" geometry="primitive: box" material="src: #earsp-icon" position='-0.81 0.005 -1.55' rotation="-25 0 0" scale="0.15 0.15 0.03" n-cockpit-parent instantiator="on: click; group: headg; mixin: earsp earsp-head;" wire="on: mousedown; emit: b1; targets: #b1s" altspace-cursor-collider="enabled: true">
+    <a-animation begin="click" attribute="material.color" from="white" to="pink" dur="200" direction="alternate"></a-animation>
+  </a-entity>
 
-  <a-entity id="suitp-spine-instantiator" geometry="primitive: box" material="src: #suitp-icon" position='-01.01 0.005 -1.55' rotation="-25 0 0" scale="0.15 0.15 0.03" n-cockpit-parent instantiator="on: click; group: spineg; mixin: suitp suitp-spine;" wire="on: mousedown; emit: b1; targets: #b1s, #suitp-spine-instantiatorh" altspace-cursor-collider="enabled: true"></a-entity>
-  <a-entity id="suitp-spine-instantiatorh" instantiator="on: b1; group: spinegh; mixin: suitph suitp-spineh;"></a-entity>
+  <a-entity id="suitp-spine-instantiator" geometry="primitive: box" material="src: #suitp-icon" position='-01.01 0.005 -1.55' rotation="-25 0 0" scale="0.15 0.15 0.03" n-cockpit-parent instantiator="on: click; group: spineg; mixin: suitp suitp-spine;" wire="on: mousedown; emit: b1; targets: #b1s" altspace-cursor-collider="enabled: true">
+    <a-animation begin="click" attribute="material.color" from="white" to="pink" dur="200" direction="alternate"></a-animation>
+  </a-entity>
 
-  <a-entity id="carrot-hand-instantiator" geometry="primitive: box" material="src: #carrot-icon" position='-0.61 0.205 -1.65' rotation="-25 0 0" scale="0.15 0.15 0.03" n-cockpit-parent instantiator="on: click; group: handr; mixin: carrot carrot-hand;" wire="on: mousedown; emit: b1; targets: #b1s, #carrot-hand-instantiatorh" altspace-cursor-collider="enabled: true"></a-entity>
-  <a-entity id="carrot-hand-instantiatorh" instantiator="on: b1; group: handrh; mixin: carroth carrot-handh;"></a-entity>
+  <a-entity id="carrot-hand-instantiator" geometry="primitive: box" material="src: #carrot-icon" position='-0.61 0.205 -1.65' rotation="-25 0 0" scale="0.15 0.15 0.03" n-cockpit-parent instantiator="on: click; group: handr; mixin: carrot carrot-hand;" wire="on: mousedown; emit: b1; targets: #b1s" altspace-cursor-collider="enabled: true">
+    <a-animation begin="click" attribute="material.color" from="white" to="hotpink" dur="200" direction="alternate"></a-animation>
+  </a-entity>
 
-  <a-entity id="egg-hand-instantiator" geometry="primitive: box" material="src: #egg-icon" position='-0.61 0.405 -1.75' rotation="-25 0 0" scale="0.15 0.15 0.03" n-cockpit-parent instantiator="on: click; group: handr; mixin: egg egg-hand;" wire="on: mousedown; emit: b1; targets: #b1s, #egg-hand-instantiatorh" altspace-cursor-collider="enabled: true"></a-entity>
-  <a-entity id="egg-hand-instantiatorh" instantiator="on: b1; group: handrh; mixin: eggh egg-handh;"></a-entity>
+  <a-entity id="egg-hand-instantiator" geometry="primitive: box" material="src: #egg-icon" position='-0.61 0.405 -1.75' rotation="-25 0 0" scale="0.15 0.15 0.03" n-cockpit-parent instantiator="on: click; group: handr; mixin: egg egg-hand;" wire="on: mousedown; emit: b1; targets: #b1s" altspace-cursor-collider="enabled: true">
+    <a-animation begin="click" attribute="material.color" from="white" to="hotpink" dur="200" direction="alternate"></a-animation>
+  </a-entity>
 
-  <a-entity id="basket-hand-instantiator" geometry="primitive: box" material="src: #basket-icon" position='-0.61 0.005 -1.55' rotation="-25 0 0" scale="0.15 0.15 0.03" n-cockpit-parent instantiator="on: click; group: handl; mixin: basket basket-hand;" wire="on: mousedown; emit: b1; targets: #b1s, #basket-hand-instantiatorh" altspace-cursor-collider="enabled: true"></a-entity>
-  <a-entity id="basket-hand-instantiatorh" instantiator="on: b1; group: handlh; mixin: basketh basket-handh;"></a-entity>
+  <a-entity id="basket-hand-instantiator" geometry="primitive: box" material="src: #basket-icon" position='-0.61 0.005 -1.55' rotation="-25 0 0" scale="0.15 0.15 0.03" n-cockpit-parent instantiator="on: click; group: handl; mixin: basket basket-hand;" wire="on: mousedown; emit: b1; targets: #b1s" altspace-cursor-collider="enabled: true">
+    <a-animation begin="click" attribute="material.color" from="white" to="hotpink" dur="200" direction="alternate"></a-animation>
+  </a-entity>
 
   <!--a-box id="test" color="red" scale="0.5 0.5 0.5" position="-1 2 -3" wire="on: click; emit: b1; targets: #b1s"></a-box-->
   <!--a-box id="num" color="green" scale="0.5 0.5 0.5" position="-1 2 -4"></a-box-->
