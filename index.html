@@ -12,9 +12,14 @@ Debuging="Beng; Evildoer; Rella;"
   <meta charset="utf-8">
   <title>a-Duck-Suit</title>
   <meta name="a-Egg-App" content="a-Egg-App">
-  <script src="https://aframe.io/releases/0.3.0/aframe.js"></script>
-  <script src="https://cdn.rawgit.com/AltspaceVR/AltspaceSDK/v2.2.0/dist/altspace.js"></script>
+  <script src="https://aframe.io/releases/0.3.0/aframe.min.js"></script>
+  <script src="https://cdn.rawgit.com/AltspaceVR/AltspaceSDK/v2.2.0/dist/altspace.min.js"></script>
   <script src="cached-model.js"></script>
+  <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+  <script src="https://unpkg.com/react@15/dist/react.min.js"></script>
+  <script src="https://unpkg.com/react-dom@15/dist/react-dom.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/lodash/4.17.4/lodash.min.js"></script>
+  <script type="text/babel" data-presets="react, es2015" src="js/scoreboard.js"></script>
   <script>
     AFRAME.registerComponent('collapse-model', {
       init: function () {
@@ -108,6 +113,8 @@ Debuging="Beng; Evildoer; Rella;"
 
 
   </a-assets>
+
+  <a-entity id="scoreboard" sync scoreboard="on: eggc; filter: a-animation; max: 23"></a-entity>
 
   <!--a-entity id="hudb" geometry="primitive: plane" material="src: #egg1" rotation="45 0 0" scale="0.1 0.022 0.001" position='0.0 0.8 -0.315' n-skeleton-parent="part: hips;"></a-entity-->
 
@@ -212,7 +219,7 @@ Debuging="Beng; Evildoer; Rella;"
     <a-animation id="egg23a" attribute="position" begin="on: eggc" dur="100000" easing="linear" repeat="0" fill="backwards" to="0 -1000 0"></a-animation>
   </cached-obj-model>
   <a-entity id="egg1s" position="0 0 0" n-sound="src: coin1.wav; on: eggc; minDistance: 1000; maxDistance: 3000" n-skeleton-parent="part: spine;"></a-entity>
-  <a-entity id="b1s" position="0 0 0" n-sound="src: b1.wav; on: b1; minDistance: 1000; maxDistance: 3000" n-skeleton-parent="part: spine;"></a-entity>
+  <a-entity id="b1s" position="0 0 0" n-sound="src: b1.wav; volume: 0.2; on: b1; minDistance: 1000; maxDistance: 3000" n-skeleton-parent="part: spine;"></a-entity>
 
 
 </a-scene>
