@@ -8,7 +8,7 @@ AFRAME.registerComponent('scoreboard', {
     filter: {type: 'string'},
     max: {type: 'number'}
   },
-	init: function () {
+  init: function () {
     this.syncSys = this.el.components.sync.syncSys;
     if (this.syncSys.isConnected) {
       this.setup();
@@ -28,7 +28,7 @@ AFRAME.registerComponent('scoreboard', {
 
     document.body.addEventListener(this.data.on, this.incrementScore.bind(this));
     dataRef.child('users').on('value', this.renderScores.bind(this));
-	},
+  },
   incrementScore: function (event) {
     if (!event.target.matches(this.data.filter)) { return; }
     this.score.transaction((val) => val + 1);
