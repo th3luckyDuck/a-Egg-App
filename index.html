@@ -12,10 +12,17 @@ Debuging="Beng; Evildoer; Rella;"
   <meta charset="utf-8">
   <title>a-Duck-Suit</title>
   <meta name="a-Egg-App" content="a-Egg-App">
+  <!--
+  <script src="https://cdn.rawgit.com/aframevr/aframe/59e4a57a/dist/aframe-master.min.js"></script>
+  -->
   <script src="https://aframe.io/releases/0.3.0/aframe.js"></script>
   <script src="https://cdn.rawgit.com/AltspaceVR/AltspaceSDK/v2.2.0/dist/altspace.js"></script>
   <script src="cached-model.js"></script>
-  <script src="js/scoreboard.js"></script>
+  <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+  <script src="https://unpkg.com/react@15/dist/react.min.js"></script>
+  <script src="https://unpkg.com/react-dom@15/dist/react-dom.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/lodash/4.17.4/lodash.min.js"></script>
+  <script type="text/babel" data-presets="react, es2015" src="js/scoreboard.js"></script>
   <script>
     AFRAME.registerComponent('collapse-model', {
       init: function () {
@@ -31,7 +38,7 @@ Debuging="Beng; Evildoer; Rella;"
 </head>
 <body>
 
-<a-scene altspace="verticalAlign: middle; fullspace: true" vr-mode-ui="enabled: false" sync-system="author: Ducky; app: egg">
+<a-scene debug altspace="verticalAlign: middle; fullspace: true" vr-mode-ui="enabled: false" sync-system="author: Ducky; app: egg">
 
   <!-- Asset Loading -->
 
