@@ -55,6 +55,10 @@ Debuging="Beng; Evildoer; Rella;"
     <a-asset-item id="carrot-obj" src="carrot.obj"></a-asset-item>
     <a-asset-item id="egg-mtl" src="egg.mtl"></a-asset-item>
     <a-asset-item id="egg-obj" src="egg.obj"></a-asset-item>
+
+    <a-asset-item id="billboard-mtl" src="billboard.mtl"></a-asset-item>
+    <a-asset-item id="billboard-obj" src="billboard.obj"></a-asset-item>
+
     <img id="earsb-icon" src="earsb-icon.jpg"/>
     <img id="suitb-icon" src="tail-icon.jpg"/>
     <img id="earsp-icon" src="earsp-icon.jpg"/>
@@ -114,7 +118,9 @@ Debuging="Beng; Evildoer; Rella;"
 
   </a-assets>
 
-  <a-entity id="scoreboard" sync scoreboard="on: eggc; filter: a-animation; max: 23"></a-entity>
+  <a-entity id="scoreboard" sync scoreboard="on: eggc; filter: a-animation; max: 23">
+    <cached-obj-model scale="3 3 3" src="billboard-obj" mtl="#billboard-mtl" position="0 0 -0.2" rotation="0 0 0"></cached-obj-model>
+  </a-entity>
 
   <!--a-entity id="hudb" geometry="primitive: plane" material="src: #egg1" rotation="45 0 0" scale="0.1 0.022 0.001" position='0.0 0.8 -0.315' n-skeleton-parent="part: hips;"></a-entity-->
 
@@ -224,7 +230,6 @@ Debuging="Beng; Evildoer; Rella;"
 
 </a-scene>
 <!--script>
-
 var name = 'user1';
 var eggs = 0;
 var sr = document.querySelector('#sspine').object3D;
@@ -233,13 +238,10 @@ altspace.getUser().then(function(user){
   console.log('User name ' + name);
   console.log('Eggs collected ' + eggs);
 });
-
 document.querySelector('#egg1').addEventListener('mousedown', function() {move(1)});
-
 function move(i) {
     document.querySelector('#sspine').setAttribute('position', {x: sr.position.x + 0, y: sr.position.z + i, z: sr.position.z + 0});
   }
-
 </script-->
 </body>
 </html>
