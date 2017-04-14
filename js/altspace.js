@@ -1882,7 +1882,7 @@ var Instantiator = (function (AFrameComponent$$1) {
 		var userGroup = this.data.group + '-' + this.syncSys.userInfo.userId;
 		if (this.data.removeLast) {
 			this.syncSys.removeLast(userGroup).then(function (lastInstantiatorId) {
-        this.el.emit('removed-last');
+				this.el.emit('removed-last');
 				if (lastInstantiatorId !== this.el.id) {
 					this.syncSys.instantiate(this.data.mixin, this.data.parent, this.el, userGroup, this.el.id);
 				}
@@ -2873,7 +2873,7 @@ var NSound = (function (NativeComponent$$1) {
 }(NativeComponent));
 
 /**
-* Spawn a browser or enclosure during the "layout" phase when a space is first created or reset. 
+* Spawn a browser or enclosure during the "layout" phase when a space is first created or reset.
 * Layout browsers can only be used by apps that are set as the default app in a space.
 * @aframe
 * @alias n-layout-browser
