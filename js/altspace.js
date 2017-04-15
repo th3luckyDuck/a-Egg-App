@@ -1882,7 +1882,9 @@ var Instantiator = (function (AFrameComponent$$1) {
 		var userGroup = this.data.group + '-' + this.syncSys.userInfo.userId;
 		if (this.data.removeLast) {
 			this.syncSys.removeLast(userGroup).then(function (lastInstantiatorId) {
-        this.el.emit('removed-last');
+        if (lastInstantiatorId && lastInstantiatorId !== this.el.id) {
+          document.getElementById(lastInstantiatorId).emit('removed-last');
+        }
 				if (lastInstantiatorId !== this.el.id) {
 					this.syncSys.instantiate(this.data.mixin, this.data.parent, this.el, userGroup, this.el.id);
 				}
