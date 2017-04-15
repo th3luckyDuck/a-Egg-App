@@ -11,8 +11,8 @@
     },
     get: function (cacheKey) {
       var mesh = this.meshes.get(cacheKey);
-      mesh.material = this.materials.get(cacheKey);
       if (mesh) {
+        mesh.material = this.materials.get(cacheKey);
         return Promise.resolve(mesh);
       }
       else {
@@ -30,13 +30,13 @@
 
   function setObject3D (mesh) {
     this.el.setObject3D('mesh', mesh.clone());
-    // TODO We should actually emit a 'object3dset' event here but n-mesh-collider would stop working
     this.el.emit('object3dset', {type: 'mesh'});
   }
 
   function waitForAndResolveModel (resolve) {
-    this.el.addEventListener('object3dset', function () {
-      resolve(this.el.object3DMap.mesh);
+    this.el.addEventListener('model-loaded', function () {
+      var mesh = this.el.object3DMap.mesh;
+      resolve(mesh.children[0] || mesh);
     }.bind(this));
   }
 
