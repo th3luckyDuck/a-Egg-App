@@ -43,11 +43,11 @@ AFRAME.registerComponent('scoreboard', {
     // TODO: Make this look pretty
     ReactDOM.render(
       <a-entity>
-        <a-entity n-text={properties({text: myScore})} position="-0.81 0.405 -1.75" rotation="-25 0 0" scale="0.15 0.15 0.03" n-cockpit-parent></a-entity>
+        <a-entity n-text={properties({text: myScore})} position="-0.85 0.405 -1.75" rotation="-25 0 0" scale="0.12 0.12 0.03" n-cockpit-parent></a-entity>
         {sortedUsers.map((user, i) =>
           <a-entity position='1.5 0.25 -9.5' rotation="0 15 0" scale='0.16 0.16 0.16'>
-            <a-entity n-text={properties({text: truncate(user.displayName)})} position={`0 ${-i} 0`}></a-entity>
-            {user.score > 200 && <a-entity mixin="egg"></a-entity>}
+            <a-entity n-text={properties({text: truncate(user.displayName)})} position={`-2 ${-i} 0`}></a-entity>
+            {user.score > 200 && <a-entity mixin="golden-egg" position={`6 ${-i} 0`}></a-entity>}
             <a-entity n-text={properties({text: user.score})} position={`4 ${-i} 0`}></a-entity>
           </a-entity>
         )}
