@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <!--
-<a-Egg-App v="0.2"
+<a-Egg-App v="1.0"
 Contributors="Ducky; Brian;"
 Debuging="Beng; Evildoer; Rella;"
 />
@@ -10,10 +10,10 @@ Debuging="Beng; Evildoer; Rella;"
 <head>
 
   <meta charset="utf-8">
-  <title>a-Duck-Suit</title>
+  <title>a-Egg-App</title>
   <meta name="a-Egg-App" content="a-Egg-App">
   <script src="https://aframe.io/releases/0.3.0/aframe.min.js"></script>
-  <script src="js/altspace.js"></script>
+  <script src="https://cdn.rawgit.com/AltspaceVR/AltspaceSDK/v2.2.0/dist/altspace.min.js"></script>
   <script src="cached-model.js"></script>
   <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
   <script src="https://unpkg.com/react@15/dist/react.min.js"></script>
@@ -25,7 +25,6 @@ Debuging="Beng; Evildoer; Rella;"
       init: function () {
         this.el.addEventListener('model-loaded', function () {
           this.el.setObject3D('mesh', this.el.object3DMap.mesh.children[0]);
-          // setObject3D emits this event in a-frame 0.4.0
           this.el.emit('object3dset', {type: 'mesh'});
         }.bind(this));
       }
@@ -35,11 +34,16 @@ Debuging="Beng; Evildoer; Rella;"
 </head>
 <body>
 
+  <!-- Create the Scene -->
+
 <a-scene altspace="verticalAlign: middle; fullspace: true" vr-mode-ui="enabled: false" sync-system="author: Ducky; app: egg">
 
   <!-- Asset Loading -->
 
   <a-assets>
+
+    <!-- Loading OBJ Models to Asset Manager -->
+
     <a-asset-item id="earsb-mtl" src="earsb.mtl"></a-asset-item>
     <a-asset-item id="earsb-obj" src="earsb.obj"></a-asset-item>
     <a-asset-item id="suitb-mtl" src="tail.mtl"></a-asset-item>
@@ -60,6 +64,8 @@ Debuging="Beng; Evildoer; Rella;"
     <a-asset-item id="billboard-mtl" src="billboard.mtl"></a-asset-item>
     <a-asset-item id="billboard-obj" src="billboard.obj"></a-asset-item>
 
+    <!-- Loading Images to Asset Manager -->
+
     <img id="earsb-icon" src="earsb-icon.jpg"/>
     <img id="suitb-icon" src="tail-icon.jpg"/>
     <img id="earsp-icon" src="earsp-icon.jpg"/>
@@ -71,101 +77,98 @@ Debuging="Beng; Evildoer; Rella;"
     <img id="collected" src="collected.jpg"/>
     <img id="rules" src="rules.jpg"/>
 
+    <!-- Adding Mixins to the Asset Manager -->
+
     <a-mixin id="earsb" obj-model="obj: #earsb-obj; mtl: #earsb-mtl" collapse-model scale="1.1 1.1 1.1"></a-mixin>
+    <a-mixin id="earsbh" geometry="primitive: plane" material="src: #earsb-icon" scale="0.02 0.02 0.001" collapse-model></a-mixin>
 
     <a-mixin id="earsb-head" rotation="0 180 0" n-skeleton-parent="part: head;" position="0 0.06 0" sync sync-n-skeleton-parent></a-mixin>
+    <a-mixin id="earsb-headh" rotation="45 0 0" position='0.00 0.8 -0.32' n-skeleton-parent="part: hips;" sync sync-n-skeleton-parent></a-mixin>
 
     <a-mixin id="suitb" obj-model="obj: #suitb-obj; mtl: #suitb-mtl" collapse-model scale="0.3 0.3 0.3"></a-mixin>
+    <a-mixin id="suitbh" geometry="primitive: plane" material="src: #suitb-icon" scale="0.02 0.02 0.001" collapse-model></a-mixin>
 
     <a-mixin id="suitb-spine" rotation="0 180 0" n-skeleton-parent="part: spine;" position="0 -0.15 0.05" sync sync-n-skeleton-parent></a-mixin>
+    <a-mixin id="suitb-spineh" rotation="45 0 0" position='-0.03 0.8 -0.32' n-skeleton-parent="part: hips;" sync sync-n-skeleton-parent></a-mixin>
 
     <a-mixin id="earsp" obj-model="obj: #earsp-obj; mtl: #earsp-mtl" collapse-model scale="1.1 1.1 1.1"></a-mixin>
+    <a-mixin id="earsph" geometry="primitive: plane" material="src: #earsp-icon" scale="0.02 0.02 0.001" collapse-model></a-mixin>
 
     <a-mixin id="earsp-head" rotation="0 180 0" n-skeleton-parent="part: head;" position="0 0.06 0" sync sync-n-skeleton-parent></a-mixin>
+    <a-mixin id="earsp-headh" rotation="45 0 0" position='0.00 0.8 -0.32' n-skeleton-parent="part: hips;" sync sync-n-skeleton-parent></a-mixin>
 
     <a-mixin id="suitp" obj-model="obj: #suitp-obj; mtl: #suitp-mtl" collapse-model scale="1 1 1"></a-mixin>
+    <a-mixin id="suitph" geometry="primitive: plane" material="src: #suitp-icon" scale="0.02 0.02 0.001" collapse-model></a-mixin>
 
     <a-mixin id="suitp-spine" rotation="0 -90 0" n-skeleton-parent="part: spine;" position="0 -0.4 -0.05" sync sync-n-skeleton-parent></a-mixin>
+    <a-mixin id="suitp-spineh" rotation="45 0 0" position='-0.03 0.8 -0.32' n-skeleton-parent="part: hips;" sync sync-n-skeleton-parent></a-mixin>
 
     <a-mixin id="carrot" obj-model="obj: #carrot-obj; mtl: #carrot-mtl" collapse-model scale="65 65 65"></a-mixin>
+    <a-mixin id="carroth" geometry="primitive: plane" material="src: #carrot-icon" scale="0.02 0.02 0.001" collapse-model></a-mixin>
 
     <a-mixin id="carrot-hand" rotation="0 90 0" n-skeleton-parent="part: hand; side: right; index: 0" position="-0.03 -0.03 -0.075" sync sync-n-skeleton-parent></a-mixin>
+    <a-mixin id="carrot-handh" rotation="45 0 0" position='0.06 0.8 -0.32' n-skeleton-parent="part: hips;" sync sync-n-skeleton-parent></a-mixin>
 
 
     <a-mixin id="basket" obj-model="obj: #basket-obj; mtl: #basket-mtl" collapse-model scale="50 50 50"></a-mixin>
+    <a-mixin id="basketh" geometry="primitive: plane" material="src: #basket-icon" scale="0.02 0.02 0.001" collapse-model></a-mixin>
 
     <a-mixin id="basket-hand" rotation="-90 180 0" n-skeleton-parent="part: hand; side: left; index: 0" position="0 -0.03 -0.5" sync sync-n-skeleton-parent></a-mixin>
+    <a-mixin id="basket-handh" rotation="45 0 0" position='0.03 0.8 -0.32' n-skeleton-parent="part: hips;" sync sync-n-skeleton-parent></a-mixin>
 
 
     <a-mixin id="egg" obj-model="obj: #egg-obj; mtl: #egg-mtl" collapse-model scale="0.05 0.05 0.05"></a-mixin>
+    <a-mixin id="eggh" geometry="primitive: plane" material="src: #egg-icon" scale="0.02 0.02 0.001" collapse-model></a-mixin>
 
     <a-mixin id="golden-egg" obj-model="obj: #egg-obj; mtl: #golden-egg-mtl" collapse-model scale="0.5 0.5 0.5"></a-mixin>
 
     <a-mixin id="egg-hand" rotation="0 180 90" n-skeleton-parent="part: hand; side: right; index: 0" position="-0.035 -0.04 -0.08" sync sync-n-skeleton-parent></a-mixin>
-
-
-    <!--a-mixin id="score-spine" n-text="text: 0" rotation="0 0 0" n-skeleton-parent="part: spine" position="0 1 0" sync sync-n-skeleton-parent></a-mixin-->
-
+    <a-mixin id="egg-handh" rotation="45 0 0" position='0.06 0.8 -0.32' n-skeleton-parent="part: hips;" sync sync-n-skeleton-parent></a-mixin>
 
   </a-assets>
 
-  <a-entity id="scoreboard" sync scoreboard="on: eggc; filter: a-animation;"></a-entity>
+  <!-- Loading the Scoreboard -->
+
+  <a-entity id="scoreboard" sync scoreboard="on: eggc; filter: a-animation; max: 300"></a-entity>
 
   <cached-obj-model scale="1.5 1.5 1.5" src="#billboard-obj" mtl="#billboard-mtl" position="3 -3.5 -10" rotation="0 105 0"></cached-obj-model>
   <a-entity n-text='text: The Altspace Egg Hunt' scale="0.5 0.5 0.5" position="3 1 -9.9" rotation="0 15 0"></a-entity>
   <a-entity n-text='text: -Leaderboard-' scale="0.25 0.25 0.25" position="1.7 0.5 -9.55" rotation="0 15 0"></a-entity>
   <a-entity id="ruleb" geometry="primitive: plane" material="src: #rules" position="4 -1 -10" scale="2.5 2.5 2.5" rotation="0 15 0"></a-entity>
 
+  <!-- Attaching Background Image for Cockpit Egg Count -->
+
   <a-entity id="eggcountb" geometry="primitive: plane" material="src: #collected" position='-0.91 0.405 -1.76' rotation="-25 0 0" scale="0.375 0.175 0.03" n-cockpit-parent></a-entity>
 
+  <!-- Attaching Instantiator Buttons to the Cockpit -->
 
-  <!--a-entity id="hudb" geometry="primitive: plane" material="src: #egg1" rotation="45 0 0" scale="0.1 0.022 0.001" position='0.0 0.8 -0.315' n-skeleton-parent="part: hips;"></a-entity-->
+  <a-entity id="earsb-head-instantiator" geometry="primitive: box" material="src: #earsb-icon" position='-0.81 0.205 -1.65' rotation="-25 0 0" scale="0.15 0.15 0.03" n-cockpit-parent instantiator="on: click; group: headg; mixin: earsb earsb-head;" wire="on: mousedown; emit: b1; targets: #b1s, #earsb-head-instantiatorh" altspace-cursor-collider="enabled: true"></a-entity>
+  <a-entity id="earsb-head-instantiatorh" instantiator="on: b1; group: headgh; mixin: earsbh earsb-headh;"></a-entity>
 
-  <!--a-entity id="sspine" one-per-user="mixin: score-spine"></a-entity-->
+  <a-entity id="suitb-spine-instantiator" geometry="primitive: box" material="src: #suitb-icon" position='-01.01 0.205 -1.65' rotation="-25 0 0" scale="0.15 0.15 0.03" n-cockpit-parent instantiator="on: click; group: spineg; mixin: suitb suitb-spine;" wire="on: mousedown; emit: b1; targets: #b1s, #suitb-spine-instantiatorh" altspace-cursor-collider="enabled: true"></a-entity>
+  <a-entity id="suitb-spine-instantiatorh" instantiator="on: b1; group: spinegh; mixin: suitbh suitb-spineh;"></a-entity>
 
-  <a-entity id="earsb-head-instantiator" geometry="primitive: box" material="src: #earsb-icon" position='-0.81 0.205 -1.65' rotation="-25 0 0" scale="0.15 0.15 0.03" n-cockpit-parent instantiator="on: click; group: headg; mixin: earsb earsb-head;" wire="on: mousedown; emit: b1; targets: #b1s" wire__clicktoanim="on: click; emit: toggle;" wire__removetoanim="on: removed-last; emit: toggle;" altspace-cursor-collider="enabled: true">
-    <a-animation id="foo" begin="toggle" attribute="material.color" from="white" to="hotpink" dur="200" direction="alternate"></a-animation>
-  </a-entity>
+  <a-entity id="earsp-head-instantiator" geometry="primitive: box" material="src: #earsp-icon" position='-0.81 0.005 -1.55' rotation="-25 0 0" scale="0.15 0.15 0.03" n-cockpit-parent instantiator="on: click; group: headg; mixin: earsp earsp-head;" wire="on: mousedown; emit: b1; targets: #b1s, #earsp-head-instantiatorh" altspace-cursor-collider="enabled: true"></a-entity>
+  <a-entity id="earsp-head-instantiatorh" instantiator="on: b1; group: headgh; mixin: earsph earsp-headh;"></a-entity>
 
-  <a-entity id="suitb-spine-instantiator" geometry="primitive: box" material="src: #suitb-icon" position='-01.01 0.205 -1.65' rotation="-25 0 0" scale="0.15 0.15 0.03" n-cockpit-parent instantiator="on: click; group: spineg; mixin: suitb suitb-spine;" wire="on: mousedown; emit: b1; targets: #b1s" wire__clicktoanim="on: click; emit: toggle" wire__removetoanim="on: removed-last; emit: toggle" altspace-cursor-collider="enabled: true">
-    <a-animation begin="toggle" attribute="material.color" from="white" to="hotpink" dur="200" direction="alternate"></a-animation>
-  </a-entity>
+  <a-entity id="suitp-spine-instantiator" geometry="primitive: box" material="src: #suitp-icon" position='-01.01 0.005 -1.55' rotation="-25 0 0" scale="0.15 0.15 0.03" n-cockpit-parent instantiator="on: click; group: spineg; mixin: suitp suitp-spine;" wire="on: mousedown; emit: b1; targets: #b1s, #suitp-spine-instantiatorh" altspace-cursor-collider="enabled: true"></a-entity>
+  <a-entity id="suitp-spine-instantiatorh" instantiator="on: b1; group: spinegh; mixin: suitph suitp-spineh;"></a-entity>
 
-  <a-entity id="earsp-head-instantiator" geometry="primitive: box" material="src: #earsp-icon" position='-0.81 0.005 -1.55' rotation="-25 0 0" scale="0.15 0.15 0.03" n-cockpit-parent instantiator="on: click; group: headg; mixin: earsp earsp-head;" wire="on: mousedown; emit: b1; targets: #b1s" wire__clicktoanim="on: click; emit: toggle;" wire__removetoanim="on: removed-last; emit: toggle;" altspace-cursor-collider="enabled: true">
-    <a-animation begin="toggle" attribute="material.color" from="white" to="hotpink" dur="200" direction="alternate"></a-animation>
-  </a-entity>
+  <a-entity id="carrot-hand-instantiator" geometry="primitive: box" material="src: #carrot-icon" position='-0.61 0.205 -1.65' rotation="-25 0 0" scale="0.15 0.15 0.03" n-cockpit-parent instantiator="on: click; group: handr; mixin: carrot carrot-hand;" wire="on: mousedown; emit: b1; targets: #b1s, #carrot-hand-instantiatorh" altspace-cursor-collider="enabled: true"></a-entity>
+  <a-entity id="carrot-hand-instantiatorh" instantiator="on: b1; group: handrh; mixin: carroth carrot-handh;"></a-entity>
 
-  <a-entity id="suitp-spine-instantiator" geometry="primitive: box" material="src: #suitp-icon" position='-01.01 0.005 -1.55' rotation="-25 0 0" scale="0.15 0.15 0.03" n-cockpit-parent instantiator="on: click; group: spineg; mixin: suitp suitp-spine;" wire="on: mousedown; emit: b1; targets: #b1s" wire__clicktoanim="on: click; emit: toggle" wire__removetoanim="on: removed-last; emit: toggle" altspace-cursor-collider="enabled: true">
-    <a-animation begin="toggle" attribute="material.color" from="white" to="hotpink" dur="200" direction="alternate"></a-animation>
-  </a-entity>
+  <a-entity id="egg-hand-instantiator" geometry="primitive: box" material="src: #egg-icon" position='-0.61 0.405 -1.75' rotation="-25 0 0" scale="0.15 0.15 0.03" n-cockpit-parent instantiator="on: click; group: handr; mixin: egg egg-hand;" wire="on: mousedown; emit: b1; targets: #b1s, #egg-hand-instantiatorh" altspace-cursor-collider="enabled: true"></a-entity>
+  <a-entity id="egg-hand-instantiatorh" instantiator="on: b1; group: handrh; mixin: eggh egg-handh;"></a-entity>
 
-  <a-entity id="carrot-hand-instantiator" geometry="primitive: box" material="src: #carrot-icon" position='-0.61 0.205 -1.65' rotation="-25 0 0" scale="0.15 0.15 0.03" n-cockpit-parent instantiator="on: click; group: handr; mixin: carrot carrot-hand;" wire="on: mousedown; emit: b1; targets: #b1s" wire__clicktoanim="on: click; emit: toggle" wire__removetoanim="on: removed-last; emit: toggle" altspace-cursor-collider="enabled: true">
-    <a-animation begin="toggle" attribute="material.color" from="white" to="hotpink" dur="200" direction="alternate"></a-animation>
-  </a-entity>
+  <a-entity id="basket-hand-instantiator" geometry="primitive: box" material="src: #basket-icon" position='-0.61 0.005 -1.55' rotation="-25 0 0" scale="0.15 0.15 0.03" n-cockpit-parent instantiator="on: click; group: handl; mixin: basket basket-hand;" wire="on: mousedown; emit: b1; targets: #b1s, #basket-hand-instantiatorh" altspace-cursor-collider="enabled: true"></a-entity>
+  <a-entity id="basket-hand-instantiatorh" instantiator="on: b1; group: handlh; mixin: basketh basket-handh;"></a-entity>
 
-  <a-entity id="egg-hand-instantiator" geometry="primitive: box" material="src: #egg-icon" position='-0.61 0.405 -1.75' rotation="-25 0 0" scale="0.15 0.15 0.03" n-cockpit-parent instantiator="on: click; group: handr; mixin: egg egg-hand;" wire="on: mousedown; emit: b1; targets: #b1s" wire__clicktoanim="on: click; emit: toggle" wire__removetoanim="on: removed-last; emit: toggle" altspace-cursor-collider="enabled: true">
-    <a-animation begin="toggle" attribute="material.color" from="white" to="hotpink" dur="200" direction="alternate"></a-animation>
-  </a-entity>
-
-  <a-entity id="basket-hand-instantiator" geometry="primitive: box" material="src: #basket-icon" position='-0.61 0.005 -1.55' rotation="-25 0 0" scale="0.15 0.15 0.03" n-cockpit-parent instantiator="on: click; group: handl; mixin: basket basket-hand;" wire="on: mousedown; emit: b1; targets: #b1s" wire__clicktoanim="on: click; emit: toggle" wire__removetoanim="on: removed-last; emit: toggle" altspace-cursor-collider="enabled: true">
-    <a-animation begin="toggle" attribute="material.color" from="white" to="hotpink" dur="200" direction="alternate"></a-animation>
-  </a-entity>
-
-  <!--a-box id="test" color="red" scale="0.5 0.5 0.5" position="-1 2 -3" wire="on: click; emit: b1; targets: #b1s"></a-box-->
-  <!--a-box id="num" color="green" scale="0.5 0.5 0.5" position="-1 2 -4"></a-box-->
-
-  <!--cached-obj-model scale="2 2 2" src="#suitb-obj" mtl="#suitb-mtl" wrapping position="2 0 -3" rotation="0 0 0"></cached-obj-model>
-  <cached-obj-model scale="0.1 0.1 0.1" src="#suitp-obj" mtl="#suitp-mtl" wrapping position="4 0 -3" rotation="0 0 0"></cached-obj-model>
-  <cached-obj-model scale="2 2 2" src="#earsb-obj" mtl="#earsb-mtl" wrapping position="2 2 -3" rotation="0 0 0"></cached-obj-model>
-  <cached-obj-model scale="2 2 2" src="#earsp-obj" mtl="#earsp-mtl" wrapping position="4 2 -3" rotation="0 0 0"></cached-obj-model>
-  <cached-obj-model scale="0.5 0.5 0.5" src="#egg-obj" mtl="#egg-mtl" wrapping position="0 1 -1" rotation="0 0 0"></cached-obj-model>
-  <cached-obj-model scale="50 50 50" src="#basket-obj" mtl="#basket-mtl" wrapping position="-1 1 -1" rotation="0 0 0"></cached-obj-model>
-  <cached-obj-model scale="65 65 65" src="#carrot-obj" mtl="#carrot-mtl" wrapping position="-2 1 -1" rotation="0 0 0"></cached-obj-model-->
+  <!-- Placing Eggs in Scene -->
 
   <cached-obj-model id="egg1" scale="0.05 0.05 0.05" src="#egg-obj" mtl="#egg-mtl" position="4.34 -3.88 -2.25" rotation="0 0 0" wire="on: click; emit: eggc; targets: #egg1s, #egg1a;">
     <a-animation id="egg1a" attribute="position" begin="on: eggc" dur="100000" easing="linear" repeat="0" fill="backwards" to="0 -1000 0"></a-animation>
   </cached-obj-model>
-  <cached-obj-model id="egg2" scale="0.05 0.05 0.05" src="#egg-obj" mtl="#egg-mtl" position="7.38 -3.85 0.42" rotation="0 0 0" wire="on: click; emit: eggc; targets: #egg1s, #egg2a;">
+  <cached-obj-model id="egg2" scale="0.05 0.05 0.05" src="#egg-obj" mtl="#egg-mtl" position="6.9 -3.85 0.42" rotation="0 0 0" wire="on: click; emit: eggc; targets: #egg1s, #egg2a;">
     <a-animation id="egg2a" attribute="position" begin="on: eggc" dur="100000" easing="linear" repeat="0" fill="backwards" to="0 -1000 0"></a-animation>
   </cached-obj-model>
   <cached-obj-model id="egg3" scale="0.05 0.05 0.05" src="#egg-obj" mtl="#egg-mtl" position="4.37 -4.71 8.74" rotation="0 0 0" wire="on: click; emit: eggc; targets: #egg1s, #egg3a;">
@@ -210,7 +213,7 @@ Debuging="Beng; Evildoer; Rella;"
   <cached-obj-model id="egg17" scale="0.05 0.05 0.05" src="#egg-obj" mtl="#egg-mtl" position="21.64 -1.02 12.8" rotation="0 0 0" wire="on: click; emit: eggc; targets: #egg1s, #egg17a;">
     <a-animation id="egg17a" attribute="position" begin="on: eggc" dur="100000" easing="linear" repeat="0" fill="backwards" to="0 -1000 0"></a-animation>
   </cached-obj-model>
-  <cached-obj-model id="egg18" scale="0.05 0.05 0.05" src="#egg-obj" mtl="#egg-mtl" position="27.76 -1.29 15.49" rotation="0 0 0" wire="on: click; emit: eggc; targets: #egg1s, #egg18a;">
+  <cached-obj-model id="egg18" scale="0.05 0.05 0.05" src="#egg-obj" mtl="#egg-mtl" position="28 -1.29 15.75" rotation="0 0 0" wire="on: click; emit: eggc; targets: #egg1s, #egg18a;">
     <a-animation id="egg18a" attribute="position" begin="on: eggc" dur="100000" easing="linear" repeat="0" fill="backwards" to="0 -1000 0"></a-animation>
   </cached-obj-model>
   <cached-obj-model id="egg19" scale="0.05 0.05 0.05" src="#egg-obj" mtl="#egg-mtl" position="35.23 2.06 31.06" rotation="0 0 0" wire="on: click; emit: eggc; targets: #egg1s, #egg19a;">
@@ -228,24 +231,19 @@ Debuging="Beng; Evildoer; Rella;"
   <cached-obj-model id="egg23" scale="0.05 0.05 0.05" src="#egg-obj" mtl="#egg-mtl" position="-21.32 -12.56 1.54" rotation="0 0 0" wire="on: click; emit: eggc; targets: #egg1s, #egg23a;">
     <a-animation id="egg23a" attribute="position" begin="on: eggc" dur="100000" easing="linear" repeat="0" fill="backwards" to="0 -1000 0"></a-animation>
   </cached-obj-model>
+  <cached-obj-model id="egg24" scale="0.05 0.05 0.05" src="#egg-obj" mtl="#egg-mtl" position="24.49 3.83 12.66" rotation="0 0 0" wire="on: click; emit: eggc; targets: #egg1s, #egg24a;">
+    <a-animation id="egg24a" attribute="position" begin="on: eggc" dur="100000" easing="linear" repeat="0" fill="backwards" to="0 -1000 0"></a-animation>
+  </cached-obj-model>
+  <cached-obj-model id="egg25" scale="0.05 0.05 0.05" src="#egg-obj" mtl="#egg-mtl" position="0.13 -3.72 -7.61" rotation="0 0 0" wire="on: click; emit: eggc; targets: #egg1s, #egg25a;">
+    <a-animation id="egg25a" attribute="position" begin="on: eggc" dur="100000" easing="linear" repeat="0" fill="backwards" to="0 -1000 0"></a-animation>
+  </cached-obj-model>
+
+  <!-- Defining Sound Effects for Eggs and Buttons -->
+
   <a-entity id="egg1s" position="0 0 0" n-sound="src: coin1.wav; on: eggc; minDistance: 1000; maxDistance: 3000" n-skeleton-parent="part: spine;"></a-entity>
   <a-entity id="b1s" position="0 0 0" n-sound="src: b1.wav; volume: 0.2; on: b1; minDistance: 1000; maxDistance: 3000" n-skeleton-parent="part: spine;"></a-entity>
 
 
 </a-scene>
-<!--script>
-var name = 'user1';
-var eggs = 0;
-var sr = document.querySelector('#sspine').object3D;
-altspace.getUser().then(function(user){
-  name = user.displayName;
-  console.log('User name ' + name);
-  console.log('Eggs collected ' + eggs);
-});
-document.querySelector('#egg1').addEventListener('mousedown', function() {move(1)});
-function move(i) {
-    document.querySelector('#sspine').setAttribute('position', {x: sr.position.x + 0, y: sr.position.z + i, z: sr.position.z + 0});
-  }
-</script-->
 </body>
 </html>
