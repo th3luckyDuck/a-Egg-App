@@ -1,0 +1,21 @@
+{
+  "hosting": {
+    "public": "."
+    "ignore": [
+      "**",
+      "!index.html",
+      "!bundle.js",
+      "!favicon.ico",
+      "!*.jpg",
+      "!*.obj",
+      "!*.mtl",
+      "!*.wav"
+    ],
+    "rewrites": [
+      {
+        "source": "**",
+        "destination": "/index.html"
+      }
+    ]
+  }
+}
