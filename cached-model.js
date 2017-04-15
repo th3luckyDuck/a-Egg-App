@@ -4,12 +4,14 @@
     init: function () {
       this.promises = new Map();
       this.meshes = new Map();
+      this.materials = new Map();
     },
     seen: function (cacheKey) {
       return !!(this.promises.get(cacheKey) || this.meshes.get(cacheKey));
     },
     get: function (cacheKey) {
       var mesh = this.meshes.get(cacheKey);
+      mesh.material = this.materials.get(cacheKey);
       if (mesh) {
         return Promise.resolve(mesh);
       }
@@ -21,6 +23,7 @@
       this.promises.set(cacheKey, promise);
       promise.then(function (mesh) {
         this.meshes.set(cacheKey, mesh);
+        this.materials.set(cacheKey, mesh.material);
       }.bind(this));
     }
   });
@@ -28,11 +31,11 @@
   function setObject3D (mesh) {
     this.el.setObject3D('mesh', mesh.clone());
     // TODO We should actually emit a 'object3dset' event here but n-mesh-collider would stop working
-    this.el.emit('model-loaded');
+    this.el.emit('object3dset', {type: 'mesh'});
   }
 
   function waitForAndResolveModel (resolve) {
-    this.el.addEventListener('model-loaded', function () {
+    this.el.addEventListener('object3dset', function () {
       resolve(this.el.object3DMap.mesh);
     }.bind(this));
   }
